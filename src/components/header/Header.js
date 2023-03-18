@@ -1,8 +1,9 @@
 import React from 'react'
+import "./Header.css"
 
 const Header = () => {
   return (
-    <div className='text-3xl'>
+    <div className='title'>
       Restaurant Review
     </div>
   )
