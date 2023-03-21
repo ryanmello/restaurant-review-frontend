@@ -10,11 +10,11 @@ import Reviews from "./components/reviews/Reviews";
 function App() {
   const [restaurants, setRestaurants] = useState();
   const [restaurant, setRestaurant] = useState();
+  const [reviews, setReviews] = useState();
 
   const getRestaurants = async () => {
     try {
       const response = await api.get("/api/v1/restaurants");
-      console.log(response.data);
       setRestaurants(response.data);
     } catch (err) {
       console.log(err);
@@ -26,7 +26,8 @@ function App() {
       const response = await api.get(`/api/v1/restaurants/${id}`)
       const singleRestaurant = response.data;
       setRestaurant(singleRestaurant);
-      console.log(restaurant)
+      setReviews(singleRestaurant.reviewIds);
+      //console.log(reviews)
     } catch(err){
       console.log(err)
     }
@@ -42,7 +43,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Restaurant restaurants={restaurants}/>}></Route>
-          <Route path="/reviews/:id" element={Reviews}></Route>
+          <Route path="/reviews/:id" element={<Reviews getRestaurantData={getRestaurantData} restaurant={restaurant} reviews={reviews} setReviews={setReviews}/>}></Route>
         </Route>
       </Routes>
     </div>

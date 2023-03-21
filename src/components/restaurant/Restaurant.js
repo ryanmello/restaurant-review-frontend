@@ -16,7 +16,7 @@ const Restaurant = ({ restaurants }) => {
   const navigate = useNavigate();
 
   function writeReview(id){
-    navigate(`/Reviews/${id}`);
+    navigate(`/reviews/${id}`);
   }
 
   return (
