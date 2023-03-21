@@ -8,6 +8,10 @@ const Restaurant = ({ restaurants }) => {
     console.log("clicked");
   }
 
+  function viewWebsite(website){
+    window.open(website, '_blank', 'noreferrer')
+  }
+
   return (
     <div className="restaurant-container">
       {restaurants?.map((restaurant) => {
@@ -52,7 +56,7 @@ const Restaurant = ({ restaurants }) => {
                     </button>
                   </div>
                   <div className="website-container"> 
-                    <button className="website" onClick={handleClick}>
+                    <button className="website" onClick={() => viewWebsite(restaurant.website)}>
                       Website
                     </button>  
                   </div>

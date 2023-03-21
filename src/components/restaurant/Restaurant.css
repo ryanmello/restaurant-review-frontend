@@ -102,19 +102,19 @@
 }
 
 .write{
-    background-color: #76517e;
-}
-
-.write:hover{
-    background-color: #63356d;
-}
-
-.website{
     background-color: #4CAF50;
 }
 
-.website:hover{
+.write:hover{
     background-color: #38803a;
+}
+
+.website{
+    background-color: #81518b;
+}
+
+.website:hover{
+    background-color: #63356d;
 }
 
 .star-container{
