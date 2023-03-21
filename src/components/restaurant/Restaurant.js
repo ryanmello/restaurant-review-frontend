@@ -1,6 +1,7 @@
 import React from "react";
 import "./Restaurant.css";
 import Star from "../media/Star.png"
+import { useNavigate } from "react-router-dom";
 
 const Restaurant = ({ restaurants }) => {
 
@@ -10,6 +11,12 @@ const Restaurant = ({ restaurants }) => {
 
   function viewWebsite(website){
     window.open(website, '_blank', 'noreferrer')
+  }
+
+  const navigate = useNavigate();
+
+  function writeReview(id){
+    navigate(`/Reviews/${id}`);
   }
 
   return (
@@ -46,12 +53,12 @@ const Restaurant = ({ restaurants }) => {
                 <div className="restaurant-description">{restaurant.description}</div>
                 <div className="button-container"> 
                   <div className="write-container"> 
-                    <button className="write" onClick={handleClick}>
+                    <button className="write" onClick={() => writeReview(restaurant.id)}>
                       Write A Review
                     </button>
                   </div>
                   <div className="review-container"> 
-                    <button className="review" onClick={handleClick}>
+                    <button className="review" onClick={()=> writeReview(restaurant.id)}>
                       Read Reviews
                     </button>
                   </div>

@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom";
 import Header from "./components/header/Header";
 import Layout from "./components/Layout";
 import Restaurant from "./components/restaurant/Restaurant";
+import Reviews from "./components/reviews/Reviews";
 
 function App() {
   const [restaurants, setRestaurants] = useState();
@@ -41,6 +42,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route path="/" element={<Restaurant restaurants={restaurants}/>}></Route>
+          <Route path="/reviews/:id" element={Reviews}></Route>
         </Route>
       </Routes>
     </div>
