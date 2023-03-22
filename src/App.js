@@ -27,7 +27,6 @@ function App() {
       const singleRestaurant = response.data;
       setRestaurant(singleRestaurant);
       setReviews(singleRestaurant.reviewIds);
-      //console.log(reviews)
     } catch(err){
       console.log(err)
     }

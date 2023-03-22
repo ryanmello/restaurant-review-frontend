@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import api from "../../api/axiosConfig";
 import { useParams } from "react-router-dom";
 import ReviewForm from "../reviewForm/ReviewForm";
@@ -12,7 +12,6 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
   const restaurantId = params.id;
 
   useEffect(() => {
-    console.log(reviews)
     getRestaurantData(restaurantId);
   }, []);
 
@@ -23,7 +22,7 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
     try {
       const response = await api.post("api/v1/reviews", {
         body: rev.value,
-        id: restaurantId,
+        id: restaurantId
       });
 
       const updatedReviews = [...reviews, { body: rev.value }];
@@ -33,10 +32,6 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
       console.log(err);
     }
   };
-
-  const submitReview = (e) => {
-    console.log("submitted")
-  }
 
   return (
     <div className="reviews-container">
@@ -72,10 +67,10 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
         <h3>Tell us about your dining experience at {restaurant?.name}</h3>
         <div className="form-field">
             <div className="review-input-container">
-                <textarea type="text" className="review-input"></textarea>
+                <textarea ref={revText} className="review-input"></textarea>
             </div>
             <div className="review-submit-button-container">
-                <button type="button" className="review-submit-button" onClick={submitReview}>Submit</button>
+                <button type="button" className="review-submit-button" onClick={addReview}>Submit</button>
             </div>
         </div>
         <div className="previous-reviews">
@@ -85,7 +80,6 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
                     <div className="review-body-container">
                         <div className="review-body">{r.body}</div>
                     </div>
-
                 )
             })}
         </div>
