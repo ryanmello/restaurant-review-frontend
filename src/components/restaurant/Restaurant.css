@@ -31,7 +31,6 @@
     height: 270px;
     width: 400px;
     border-radius: 20px;
-    
 }
 
 .restaurant-name{
@@ -129,6 +128,40 @@
     height: 18px;
     padding-bottom: 2px;
     padding-right: 2px;
+}
+
+@media screen and (max-width: 1000px) {
+    .restaurant-card{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .restaurant-image-container{
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .restaurant-image{
+        object-fit: cover;
+        height: 100%;
+        height: 270px;
+        max-width: 100%;
+        width: 1000px;
+        border-radius: 20px;
+    }
+
+    .restaurant-information{
+        max-width: 100%;
+        width: 1000px;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .write, .review, .website{
+        font-size: 12px;
+    }
 }
 
 

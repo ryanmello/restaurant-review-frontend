@@ -46,7 +46,8 @@
 }
 
 .review-submit-button{
-    width: 100%;
+    max-width: 100%;
+    width: 800px;
     height: 40px;
     border: none;
     border-radius: 20px;
@@ -68,4 +69,25 @@
 
 .review-body-container{
     padding: 4px 0 4px 0;
+}
+
+@media screen and (max-width: 1000px) {
+    .reviews-container{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .left-reviews-container{
+        max-width: 100%;
+    }
+    
+    .right-reviews-container{
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .review-submit-button{
+        max-width: 100%;
+        width: 1000px;
+    }
 }

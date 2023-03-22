@@ -19,18 +19,23 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
     e.preventDefault();
     const rev = revText.current;
 
-    try {
-      const response = await api.post("api/v1/reviews", {
-        body: rev.value,
-        id: restaurantId
-      });
-
-      const updatedReviews = [...reviews, { body: rev.value }];
-      rev.value = "";
-      setReviews(updatedReviews);
-    } catch (err) {
-      console.log(err);
+    if(rev.value == ''){
+      console.log('invalid entry')
+    } else {
+      try {
+        const response = await api.post("api/v1/reviews", {
+          body: rev.value,
+          id: restaurantId
+        });
+  
+        const updatedReviews = [...reviews, { body: rev.value }];
+        rev.value = "";
+        setReviews(updatedReviews);
+      } catch (err) {
+        console.log(err);
+      }
     }
+
   };
 
   return (
@@ -63,25 +68,27 @@ const Reviews = ({ getRestaurantData, restaurant, reviews, setReviews }) => {
         <div className="restaurant-description">{restaurant?.description}</div>
       </div>
       <div className="right-reviews-container">
-        <h1>Write A Review :</h1>
-        <h3>Tell us about your dining experience at {restaurant?.name}</h3>
-        <div className="form-field">
-            <div className="review-input-container">
-                <textarea ref={revText} className="review-input"></textarea>
-            </div>
-            <div className="review-submit-button-container">
-                <button type="button" className="review-submit-button" onClick={addReview}>Submit</button>
-            </div>
-        </div>
-        <div className="previous-reviews">
-            <h1>All Reviews :</h1>
-            {reviews?.map((r) => {
-                return (
-                    <div className="review-body-container">
-                        <div className="review-body">{r.body}</div>
-                    </div>
-                )
-            })}
+        <div className="right-reviews-row">
+          <h1>Write A Review :</h1>
+          <h3>Tell us about your dining experience at {restaurant?.name}</h3>
+          <div className="form-field">
+              <div className="review-input-container">
+                  <textarea ref={revText} className="review-input"></textarea>
+              </div>
+              <div className="review-submit-button-container">
+                  <button type="button" className="review-submit-button" onClick={addReview}>Submit</button>
+              </div>
+          </div>
+          <div className="previous-reviews">
+              <h1>All Reviews :</h1>
+              {reviews?.map((r) => {
+                  return (
+                      <div className="review-body-container">
+                          <div className="review-body">{r.body}</div>
+                      </div>
+                  )
+              })}
+          </div>
         </div>
       </div>
     </div>
